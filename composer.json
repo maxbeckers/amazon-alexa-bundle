@@ -1,0 +1,45 @@
+{
+  "name": "maxbeckers/amazon-alexa-bundle",
+  "type": "library",
+  "description": "Symfony Bundle for amazon alexa skills.",
+  "keywords": [
+    "alexa",
+    "skill",
+    "amazon-alexa",
+    "amazon-echo",
+    "alexa-skill",
+    "symfony",
+    "php",
+    "bundle"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/maxbeckers/amazon-alexa-bundle/issues",
+    "source": "https://github.com/maxbeckers/amazon-alexa-bundle"
+  },
+  "authors": [
+    {
+      "name": "Maximilian Beckers",
+      "email": "beckers.maximilian@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.0",
+    "symfony/config": ">= 2.8",
+    "symfony/dependency-injection": ">= 2.8",
+    "symfony/framework-bundle": ">= 2.8",
+    "symfony/http-foundation": ">= 2.8",
+    "symfony/http-kernel": ">= 2.8",
+    "maxbeckers/amazon-alexa-php": ">= 0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "MaxBeckers\\AmazonAlexaBundle\\": "src/"
+    }
+  }
+}

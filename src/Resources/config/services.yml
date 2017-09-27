@@ -1,0 +1,13 @@
+services:
+    maxbeckers_amazon_alexa.request_validator:
+        class: MaxBeckers\AmazonAlexa\Validation\RequestValidator
+
+    maxbeckers_amazon_alexa.request_handler_registry:
+        class: MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry
+
+    maxbeckers_amazon_alexa.request_transformer:
+        class: MaxBeckers\AmazonAlexaBundle\DependencyInjection\RequestTransformer
+        arguments:
+            - '@maxbeckers_amazon_alexa.request_handler_registry'
+            - '@maxbeckers_amazon_alexa.request_validator'
+            - '@request_stack'

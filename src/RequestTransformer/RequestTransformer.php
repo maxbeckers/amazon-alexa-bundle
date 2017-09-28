@@ -1,6 +1,6 @@
 <?php
 
-namespace MaxBeckers\AmazonAlexaBundle\DependencyInjection;
+namespace MaxBeckers\AmazonAlexaBundle\RequestTransformer;
 
 use MaxBeckers\AmazonAlexa\Request\Request as AlexaRequest;
 use MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry;

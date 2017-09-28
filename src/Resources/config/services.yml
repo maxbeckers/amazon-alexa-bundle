@@ -6,7 +6,7 @@ services:
         class: MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry
 
     maxbeckers_amazon_alexa.request_transformer:
-        class: MaxBeckers\AmazonAlexaBundle\DependencyInjection\RequestTransformer
+        class: MaxBeckers\AmazonAlexaBundle\RequestTransformer\RequestTransformer
         arguments:
             - '@maxbeckers_amazon_alexa.request_handler_registry'
             - '@maxbeckers_amazon_alexa.request_validator'

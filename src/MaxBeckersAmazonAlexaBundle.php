@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * @author Maximilian Beckers <beckers.maximilian@gmail.com>
  */
-class AmazonAlexaBundle extends Bundle
+class MaxBeckersAmazonAlexaBundle extends Bundle
 {
     /**
      * {@inheritdoc}

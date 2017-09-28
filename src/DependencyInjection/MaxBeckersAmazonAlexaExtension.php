@@ -10,7 +10,7 @@ use Symfony\Component\Config\FileLocator;
 /**
  * @author Maximilian Beckers <beckers.maximilian@gmail.com>
  */
-class AmazonAlexaExtension extends Extension
+class MaxBeckersAmazonAlexaExtension extends Extension
 {
     /**
      * {@inheritDoc}

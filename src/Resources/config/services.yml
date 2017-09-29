@@ -5,6 +5,9 @@ services:
     maxbeckers_amazon_alexa.request_handler_registry:
         class: MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry
 
+    maxbeckers_amazon_alexa.response_helper:
+        class: MaxBeckers\AmazonAlexa\Helper\ResponseHelper
+
     maxbeckers_amazon_alexa.request_transformer:
         class: MaxBeckers\AmazonAlexaBundle\RequestTransformer\RequestTransformer
         arguments:

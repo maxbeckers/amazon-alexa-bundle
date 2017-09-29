@@ -1,6 +1,6 @@
 {
   "name": "maxbeckers/amazon-alexa-bundle",
-  "type": "library",
+  "type": "symfony-bundle",
   "description": "Symfony Bundle for amazon alexa skills.",
   "keywords": [
     "alexa",

@@ -50,8 +50,8 @@ class RequestTransformer
     {
         $alexaRequest = AlexaRequest::fromAmazonRequest(
             $request->getContent(),
-            $request->headers->get('HTTP_SIGNATURECERTCHAINURL'),
-            $request->headers->get('HTTP_SIGNATURE')
+            $request->server->get('HTTP_SIGNATURECERTCHAINURL', ''),
+            $request->server->get('HTTP_SIGNATURE', '')
         );
 
         $this->requestValidator->validate($alexaRequest);

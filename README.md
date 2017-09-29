@@ -43,7 +43,7 @@ To add Handlers for alexa, create them as a service and tag them with `maxbecker
 How to create a handler see [maxbeckers/amazon-alexa-php](https://github.com/maxbeckers/amazon-alexa-php).
 ```
 services:
-    app.fulltext_handler:
+    example.my_handler:
         class: Example\MyIntentHandler
         arguments:
             - '@maxbeckers_amazon_alexa.response_helper' # ResponseHelper

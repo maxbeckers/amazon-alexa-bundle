@@ -1,5 +1,5 @@
 # Amazon alexa symfony bundle
-Symfony Bundle for amazon alexa skills.
+This bundle is a simlpe helper to create an Amazon Echo (Alexa) endpoint to your symfony project. You only need to add the Bundle to your project and create some handlers for the alexa requests, configured in [amazon alexa backend](https://developer.amazon.com/alexa).
 
 ## Install via composer
 Require the bundle via composer:

@@ -10,7 +10,8 @@
     "alexa-skill",
     "symfony",
     "php",
-    "bundle"
+    "bundle",
+    "ssml"
   ],
   "license": "MIT",
   "support": {

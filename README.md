@@ -50,3 +50,14 @@ services:
         tags:
             - 'maxbeckers_amazon_alexa.request_handler'
 ```
+## Generate ssml
+For ssml use the `maxbeckers_amazon_alexa.ssml_generator` service to create valid ssml. 
+```php
+$ssmlGenerator = $this->get('maxbeckers_amazon_alexa.ssml_generator');
+
+// add a message
+$ssmlGenerator->say('Hallo World');
+$ssml = $ssmlGenerator->getSsml();
+// $ssml === '<speak>Hallo World</speak>'
+
+```

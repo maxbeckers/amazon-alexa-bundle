@@ -6,9 +6,11 @@ services:
         class: MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry
 
     maxbeckers_amazon_alexa.response_helper:
+        public: true
         class: MaxBeckers\AmazonAlexa\Helper\ResponseHelper
 
     maxbeckers_amazon_alexa.request_transformer:
+        public: true
         class: MaxBeckers\AmazonAlexaBundle\RequestTransformer\RequestTransformer
         arguments:
             - '@maxbeckers_amazon_alexa.request_handler_registry'
@@ -16,4 +18,5 @@ services:
             - '@request_stack'
 
     maxbeckers_amazon_alexa.ssml_generator:
+        public: true
         class: MaxBeckers\AmazonAlexa\Helper\SsmlGenerator

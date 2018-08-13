@@ -1,4 +1,6 @@
 services:
+    _defaults: { public: true }
+
     maxbeckers_amazon_alexa.request_validator:
         class: MaxBeckers\AmazonAlexa\Validation\RequestValidator
 

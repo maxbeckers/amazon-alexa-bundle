@@ -18,6 +18,12 @@ class AmazonAlexaController extends Controller
      */
     public function amazonRequestAction(Request $request): JsonResponse
     {
-        return new JsonResponse($this->get('maxbeckers_amazon_alexa.request_transformer')->transformRequest($request));
+        return new JsonResponse(
+            $this->get('maxbeckers_amazon_alexa.request_transformer')->transformRequest(
+                $request,
+                $request->headers->get('SIGNATURECERTCHAINURL'),
+                $request->headers->get('SIGNATURE')
+            )
+        );
     }
 }

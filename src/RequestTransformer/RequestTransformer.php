@@ -2,6 +2,7 @@
 
 namespace MaxBeckers\AmazonAlexaBundle\RequestTransformer;
 
+use MaxBeckers\AmazonAlexa\Exception\MissingRequestDataException;
 use MaxBeckers\AmazonAlexa\Request\Request as AlexaRequest;
 use MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry;
 use MaxBeckers\AmazonAlexa\Response\Response;
@@ -48,11 +49,19 @@ class RequestTransformer
      */
     public function transformRequest(Request $request): Response
     {
+        if (!$request->getContent()) {
+            throw new MissingRequestDataException();
+        }
+
         $alexaRequest = AlexaRequest::fromAmazonRequest(
             $request->getContent(),
             $request->server->get('HTTP_SIGNATURECERTCHAINURL', ''),
             $request->server->get('HTTP_SIGNATURE', '')
         );
+
+        if (!$alexaRequest) {
+            throw new MissingRequestDataException();
+        }
 
         $this->requestValidator->validate($alexaRequest);
         $handler = $this->requestHandlerRegistry->getSupportingHandler($alexaRequest);

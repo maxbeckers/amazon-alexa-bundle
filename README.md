@@ -6,34 +6,10 @@ Require the bundle via composer:
 ```
 composer require maxbeckers/amazon-alexa-bundle
 ```
-## Enable the Bundle
-Then, enable the bundle by adding it to the list of registered bundles
-in the `app/AppKernel.php` file of your project:
-
-```php
-<?php
-// app/AppKernel.php
-
-// ...
-class AppKernel extends Kernel
-{
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new MaxBeckers\AmazonAlexaBundle\MaxBeckersAmazonAlexaBundle(),
-        );
-
-        // ...
-    }
-
-    // ...
-}
-```
 ## Enable Routing
-Then add the Bundle endpoint for alexa to `routing.yml`.
+Then add the Bundle endpoint for alexa to `config/routes.yaml`.
 ```
-# app/config/routing.yml
+# config/routes.yaml
 maxbeckers_amazon_alexa:
     path:     /alexa/ # the url, the alexa endpoint should be available 
     defaults: { _controller: MaxBeckersAmazonAlexaBundle:AmazonAlexa:amazonRequest }

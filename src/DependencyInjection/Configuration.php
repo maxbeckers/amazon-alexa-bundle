@@ -15,8 +15,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('maxbeckers_amazon_alexa');
+        $treeBuilder = new TreeBuilder('maxbeckers_amazon_alexa');
+        $rootNode    = $treeBuilder->getRootNode();
 
         return $treeBuilder;
     }

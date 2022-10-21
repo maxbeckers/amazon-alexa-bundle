@@ -12,7 +12,7 @@ Then add the Bundle endpoint for alexa to `config/routes.yaml`.
 # config/routes.yaml
 maxbeckers_amazon_alexa:
     path:     /alexa/ # the url, the alexa endpoint should be available 
-    defaults: { _controller: MaxBeckersAmazonAlexaBundle:AmazonAlexa:amazonRequest }
+    defaults: { _controller: MaxBeckers\AmazonAlexaBundle\Controller\AmazonAlexa::amazonRequest }
 ```
 ## Create handlers
 To add Handlers for alexa, create them as a service and tag them with `maxbeckers_amazon_alexa.request_handler`.

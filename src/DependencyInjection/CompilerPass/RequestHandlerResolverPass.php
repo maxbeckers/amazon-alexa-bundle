@@ -14,7 +14,7 @@ class RequestHandlerResolverPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         $definition     = $container->findDefinition('maxbeckers_amazon_alexa.request_handler_registry');
         $taggedServices = $container->findTaggedServiceIds('maxbeckers_amazon_alexa.request_handler');

@@ -15,39 +15,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class RequestTransformer
 {
-    /**
-     * @var RequestHandlerRegistry
-     */
-    private $requestHandlerRegistry;
-
-    /**
-     * @var RequestValidator
-     */
-    private $requestValidator;
-
-    /**
-     * @var RequestStack
-     */
-    private $requestStack;
-
-    /**
-     * @param RequestHandlerRegistry $requestHandlerRegistry
-     * @param RequestValidator       $requestValidator
-     * @param RequestStack           $requestStack
-     */
-    public function __construct(RequestHandlerRegistry $requestHandlerRegistry, RequestValidator $requestValidator, RequestStack $requestStack)
-    {
-        $this->requestHandlerRegistry = $requestHandlerRegistry;
-        $this->requestValidator       = $requestValidator;
-        $this->requestStack           = $requestStack;
+    public function __construct(
+        private readonly RequestHandlerRegistry $requestHandlerRegistry,
+        private readonly RequestValidator $requestValidator,
+        private readonly RequestStack $requestStack
+    ) {
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function transformRequest(Request $request): Response
+    public function transformRequest(Request $request, ?string $signatureCertChainUrl = null, ?string $signature = null): Response
     {
         if (!$request->getContent()) {
             throw new MissingRequestDataException();
@@ -55,8 +30,8 @@ class RequestTransformer
 
         $alexaRequest = AlexaRequest::fromAmazonRequest(
             $request->getContent(),
-            $request->server->get('HTTP_SIGNATURECERTCHAINURL', ''),
-            $request->server->get('HTTP_SIGNATURE', '')
+            $signatureCertChainUrl ?? $request->server->get('HTTP_SIGNATURECERTCHAINURL', ''),
+            $signature ?? $request->server->get('HTTP_SIGNATURE', '')
         );
 
         if (!$alexaRequest) {
@@ -69,9 +44,6 @@ class RequestTransformer
         return $handler->handleRequest($alexaRequest);
     }
 
-    /**
-     * @return Response
-     */
     public function transform(): Response
     {
         $request = $this->requestStack->getCurrentRequest();

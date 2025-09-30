@@ -1,14 +1,25 @@
 services:
-    _defaults: { public: true }
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
 
+    MaxBeckers\AmazonAlexaBundle\:
+        resource: '../../'
+        exclude: '../../{DependencyInjection,Resources}'
+
+    # Make specific services public that need to be accessed directly
     maxbeckers_amazon_alexa.request_validator:
         class: MaxBeckers\AmazonAlexa\Validation\RequestValidator
+        public: true
 
     maxbeckers_amazon_alexa.request_handler_registry:
         class: MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry
+        public: true
 
     maxbeckers_amazon_alexa.response_helper:
         class: MaxBeckers\AmazonAlexa\Helper\ResponseHelper
+        public: true
 
     maxbeckers_amazon_alexa.request_transformer:
         class: MaxBeckers\AmazonAlexaBundle\RequestTransformer\RequestTransformer
@@ -16,6 +27,20 @@ services:
             - '@maxbeckers_amazon_alexa.request_handler_registry'
             - '@maxbeckers_amazon_alexa.request_validator'
             - '@request_stack'
+        public: true
 
     maxbeckers_amazon_alexa.ssml_generator:
         class: MaxBeckers\AmazonAlexa\Helper\SsmlGenerator
+        public: true
+
+    MaxBeckers\AmazonAlexaBundle\Controller\AmazonAlexaController:
+        arguments:
+            - '@maxbeckers_amazon_alexa.request_transformer'
+        tags: ['controller.service_arguments']
+
+    # Alias services for backward compatibility
+    MaxBeckers\AmazonAlexa\Validation\RequestValidator: '@maxbeckers_amazon_alexa.request_validator'
+    MaxBeckers\AmazonAlexa\RequestHandler\RequestHandlerRegistry: '@maxbeckers_amazon_alexa.request_handler_registry'
+    MaxBeckers\AmazonAlexa\Helper\ResponseHelper: '@maxbeckers_amazon_alexa.response_helper'
+    MaxBeckers\AmazonAlexaBundle\RequestTransformer\RequestTransformer: '@maxbeckers_amazon_alexa.request_transformer'
+    MaxBeckers\AmazonAlexa\Helper\SsmlGenerator: '@maxbeckers_amazon_alexa.ssml_generator'
